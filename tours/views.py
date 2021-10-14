@@ -11,7 +11,7 @@ from rest_framework import viewsets
 @login_required()
 def index(request):
 	""" Atiende la petición GET / """
-	tours = Tour.objects.filter(zonaSalida__nombre = "CDMX")
+	tours = Tour.objects.all()
 
 	return render(request, "tours/index.html", {"tours":tours})
 
