@@ -88,11 +88,6 @@
        </aside>
 
        <section id="central">
-
-          <!--
-            tours -> [tour1_obj_Tour, tour2_obj_Tour, tour3_obj_Tour, ...], []
-            tour = tours[0], tour = tours[1], 
-          -->
           {% for tour in tours %}
           <div class="tour-container">
             <div class="card-image-container">
@@ -125,6 +120,15 @@
               <div class="">
                 <a href="/tour/{{ tour.id }}/">Ver tour</a>
               </div>
+              {% if es_operador %}
+              <nav class="nav-botones">
+                <a class="btn" href="/tour/agregar/">Agregar</a>
+                <a class="btn" href="/tour/modificar/{{ tour.id }}/">
+                Editar</a>
+                <a class="btn" href="/tour/eliminar/{{ tour.id }}/">
+                Eliminar</a>
+              </nav>
+              {% endif %}
             </div>
           </div><!-- termina tour -->
           {% endfor %}

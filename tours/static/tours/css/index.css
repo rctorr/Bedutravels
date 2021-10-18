@@ -239,3 +239,27 @@ footer{
 
 
 }
+
+/**********************************************************
+Estilos para barra de botones para las acciones de un tour
+***********************************************************/
+nav.nav-botones {
+  background-color: #ddd;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a.btn {
+  border: 1px solid #ccc;
+  background-color: #008;
+  color: #eee;
+  padding: 5px 15px;
+  text-decoration: none;
+}
+
+a.btn:hover {
+  background-color: #00a;
+}

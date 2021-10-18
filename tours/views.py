@@ -10,10 +10,16 @@ from rest_framework import viewsets
 # Create your views here.
 @login_required()
 def index(request):
-	""" Atiende la petición GET / """
-	tours = Tour.objects.all()
+   """ Atiende la petición GET / """
+   tours = Tour.objects.all()
+   es_operador = request.user.groups.filter(name="operador").exists()
 
-	return render(request, "tours/index.html", {"tours":tours})
+   return render(request, "tours/index.html",
+      {
+         "tours":tours,
+         "es_operador":es_operador,
+      }
+   )
 
 # Vistas basadas en clases para Django Rest
 class ZonaViewSet(viewsets.ModelViewSet):
