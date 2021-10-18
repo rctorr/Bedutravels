@@ -1,10 +1,10 @@
-*{
+* {
   margin: 0%;
   padding: 0%;
   font-family: 'Open Sans', sans-serif;
 }
 
-footer{
+footer {
   align-self: flex-end;
   background: #24272a;
   color: white;
@@ -13,7 +13,7 @@ footer{
   box-sizing: border-box;
 }
 
-nav{
+nav {
   background-color: #24272a;
   height: 50px;
   width: 100%;
@@ -34,24 +34,25 @@ nav .marca {
   padding-right: 20px;
   margin-left: 20px;
 }
-textarea:focus, input:focus{
+
+textarea:focus, input:focus {
     outline: none;
 }
 
-footer{
+footer {
   height: 200px;
   width: 100%;
   background-color: #24272a;
   display: flex;
-    align-items: center;
+  align-items: center;
 }
 
-#bedu-logo{
+#bedu-logo {
   margin-left: 20px;
   width: 50px;
 }
 
-#home-cover{
+#home-cover {
   background-image: url("../img/img_cover_home.jpg");
   height: 70vh;
   width: 100vw;
@@ -63,74 +64,73 @@ footer{
   color: #fff;
 }
 
-.social-media-container{
+.social-media-container {
   display: flex;
   justify-content: center;
   width: 300px;
 }
 
-.social-media-container > img{
+.social-media-container > img {
   width: 30px;
   padding: 0 10px 0 10px;
 }
 
-.text-shadow{
+.text-shadow {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.45);
 }
 
-.title-font{
+.title-font {
   font-size: 30px;
 }
 
-.subtitle-font{
+.subtitle-font {
   font-size: 20px;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 
-.margin-top-lg{
+.margin-top-lg {
   margin-top: 50px;
 }
 
-.margin-top-md{
+.margin-top-md {
   margin-top: 30px;
 }
 
-.margin-top-sm{
+.margin-top-sm {
   margin-top: 15px;
 }
 
-.margin-bottom-md{
+.margin-bottom-md {
   margin-bottom: 30px;
 }
 
-.margin-bottom-lg{
+.margin-bottom-lg {
   margin-bottom: 50px;
 }
 
-.margin-bottom-sm{
+.margin-bottom-sm {
   margin-bottom: 15px;
 }
 
 
-.padding-top-md{
+.padding-top-md {
   padding-top: 30px;
 }
 
-.padding-top-lg{
+.padding-top-lg {
   padding-top: 50px;
 }
 
-.center-center{
+.center-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-
-.searchbar{
+.searchbar {
     background-color: #fff;
     padding-left: 10px;
     padding: 3px;
@@ -142,7 +142,7 @@ footer{
     border-radius: 5px;
 }
 
-.searchbar > input{
+.searchbar > input {
     width: 100%;
     padding: 0;
     margin: 0;
@@ -151,7 +151,7 @@ footer{
     padding-left: 5px;
 }
 
-.searchbar > form > input{
+.searchbar > form > input {
   width: 100%;
   padding: 0;
   margin: 0;
@@ -160,31 +160,30 @@ footer{
   padding-left: 5px;
 }
 
-.top-country-gridarea{
+.top-country-gridarea {
   display: grid;
   grid-template-columns: 25vw 25vw 25vw;
   grid-template-rows: auto auto auto;
   justify-items: center;
 }
 
-.top-country-container{
+.top-country-container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.top-country-gridarea > div{
+.top-country-gridarea > div {
   width: 24vw;
   height: 30vh;
-
 }
 
-.top-country-gridarea > div > img{
+.top-country-gridarea > div > img {
   width: 100%;
   height: 80%;
 }
 
-.search-button{
+.search-button {
   height: 44px;
   width: 45px;
   color: white;
@@ -193,21 +192,17 @@ footer{
   border-radius: 5px;
 }
 
-.text-style-none{
+.text-style-none {
   text-decoration: none;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-
-
-  nav{
+  nav {
     justify-content: center;
-
   }
 
-  nav > div{
+  nav > div {
     display: none;
-
   }
 
   #home-cover{
@@ -215,7 +210,7 @@ footer{
     background-position: -191px -193px;
   }
 
-  #home-cover > div > p:first-child{
+  #home-cover > div > p:first-child {
     font-size: 40px;
   }
 
@@ -231,13 +226,18 @@ footer{
   .top-country-gridarea > div {
     width: 40vw;
     height: 30vh;
-}
+  }
 
-.title-font{
-  font-size: 50px;
-}
+  .title-font{
+    font-size: 50px;
+  }
+} /* termina media */
 
-
+aside.msg {
+  padding: 15px;
+  background-color: #ff0;
+  margin: 15px auto;
+  width: 80%;
 }
 
 /**********************************************************

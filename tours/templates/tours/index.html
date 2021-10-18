@@ -6,6 +6,12 @@
         <h3>Destinos maravillosos para revitalizar el cuerpo y alimentar el alma</h3>
     </section>
 
+    {% if msg %}
+    <aside class="msg">
+      {{ msg }}
+    </aside>
+    {% endif %}
+
     <section id="content">
       <aside id="column-left">
         <p class="margin-bottom-sm">Filtrar por:</p>

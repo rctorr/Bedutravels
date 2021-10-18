@@ -1,0 +1,48 @@
+div.contenido {
+    width: 80%;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px #999;
+    background-color: #fff;
+}
+
+div.contenido header {
+    padding: 10px 0px;
+}
+
+div.contenido label {
+    display: inline-block;
+    width: 150px;
+}
+
+div.contenido label.requerido {
+    font-weight: bolder;
+}
+
+div.contenido input {
+    display: inline-block;
+    width: 350px;
+}
+
+div.contenido hr {
+    margin: 10px 0px;
+    border: 0px;
+    border-top: 1px solid #aaa;
+}
+
+div.contenido footer {
+    background-color: #ddd;
+    height: auto;
+    padding: 10px;
+}
+
+div.contenido footer input {
+    width: auto;
+}
+
+div.contenido footer nav {
+    background-color: initial;
+    height: auto;
+}
+

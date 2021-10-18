@@ -6,6 +6,8 @@ from . import views
 
 urlpatterns = [
 	path('', views.index, name="index"),
+    path('tour/agregar/', views.tour_agregar, name="tour_agregar"),
+    path('tour/eliminar/<int:id_tour>/', views.tour_eliminar, name="tour_eliminar"),
     path("login/",
     	auth_views.LoginView.as_view(template_name="registration/login.html"),
     	name="login"),
