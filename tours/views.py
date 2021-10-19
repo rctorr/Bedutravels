@@ -35,24 +35,30 @@ def tour_agregar(request):
          slug_form = request.POST.get("slug", None)
          tipoDeTour_form = request.POST.get("tipoDeTour", None)
          descripcion_form = request.POST.get("descripcion")
-         img_form = request.POST.get("img", None)
+         if request.FILES:
+            img_file = request.FILES["img"]
+         else:
+            img_file = None
          pais_form = request.POST.get("pais", None)
          zonaSalida_id_form = request.POST.get("zonaSalida", None)
          zonaSalida_obj = Zona.objects.get(pk=zonaSalida_id_form)
          zonaLlegada_id_form = request.POST.get("zonaLlegada", None)
          zonaLlegada_obj = Zona.objects.get(pk=zonaLlegada_id_form)
          tour = Tour(
+            user=request.user,
             nombre=nombre_form,
             slug=slug_form,
             tipoDeTour=tipoDeTour_form,
             descripcion=descripcion_form,
-            img=img_form,
             pais=pais_form,
             zonaSalida=zonaSalida_obj,
             zonaLlegada=zonaLlegada_obj,
             operador=request.user.username,
          )
+         tour.save()  # genera un id para la instancia del tour
+         tour.img=img_file
          tour.save()
+
          msg = "El Tour ha sido guardado exitosamente!"
 
          return index(request, msg)
@@ -85,7 +91,10 @@ def tour_modificar(request, id_tour):
          slug_form = request.POST.get("slug", None)
          tipoDeTour_form = request.POST.get("tipoDeTour", None)
          descripcion_form = request.POST.get("descripcion")
-         img_form = request.POST.get("img", None)
+         if request.FILES:
+            img_file = request.FILES["img"]
+         else:
+            img_file = None
          pais_form = request.POST.get("pais", None)
          zonaSalida_id_form = request.POST.get("zonaSalida", None)
          zonaSalida_obj = Zona.objects.get(pk=zonaSalida_id_form)
@@ -96,7 +105,7 @@ def tour_modificar(request, id_tour):
          tour_obj.slug=slug_form
          tour_obj.tipoDeTour=tipoDeTour_form
          tour_obj.descripcion=descripcion_form
-         tour_obj.img=img_form
+         tour_obj.img=img_file
          tour_obj.pais=pais_form
          tour_obj.zonaSalida=zonaSalida_obj
          tour_obj.zonaLlegada=zonaLlegada_obj
