@@ -73,6 +73,48 @@ def tour_eliminar(request, id_tour):
 
    return redirect("/")
 
+@login_required()
+def tour_modificar(request, id_tour):
+   """ Atiende las peticiones GET y POST /tour/modificar/id_tour/ """
+   tour_obj = Tour.objects.get(pk=id_tour)
+   zonas = Zona.objects.all()
+   es_operador = request.user.groups.filter(name="operador").exists()
+   if es_operador:
+      if request.method == "POST":
+         nombre_form = request.POST.get("nombre")
+         slug_form = request.POST.get("slug", None)
+         tipoDeTour_form = request.POST.get("tipoDeTour", None)
+         descripcion_form = request.POST.get("descripcion")
+         img_form = request.POST.get("img", None)
+         pais_form = request.POST.get("pais", None)
+         zonaSalida_id_form = request.POST.get("zonaSalida", None)
+         zonaSalida_obj = Zona.objects.get(pk=zonaSalida_id_form)
+         zonaLlegada_id_form = request.POST.get("zonaLlegada", None)
+         zonaLlegada_obj = Zona.objects.get(pk=zonaLlegada_id_form)
+
+         tour_obj.nombre=nombre_form
+         tour_obj.slug=slug_form
+         tour_obj.tipoDeTour=tipoDeTour_form
+         tour_obj.descripcion=descripcion_form
+         tour_obj.img=img_form
+         tour_obj.pais=pais_form
+         tour_obj.zonaSalida=zonaSalida_obj
+         tour_obj.zonaLlegada=zonaLlegada_obj
+         tour_obj.save()
+
+         msg = "El Tour ha sido modificado exitosamente!"
+
+         return index(request, msg)
+
+      return render(request, "tours/tour_modificar.html",
+         {
+            "zonas":zonas,
+            "tour":tour_obj,
+         }
+      )
+   else:
+      raise Http404("El Tour no existe")
+
 
 # Vistas basadas en clases para Django Rest
 class ZonaViewSet(viewsets.ModelViewSet):

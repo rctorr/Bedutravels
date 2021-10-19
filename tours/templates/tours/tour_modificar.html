@@ -1,0 +1,62 @@
+{% extends "tours/base.html" %}
+
+    {% block contenido %}
+    <div class="contenido">
+      <form action="/tour/modificar/{{ tour.id }}/" method="POST">
+        {% csrf_token %}
+        <header>
+          <h2>Modificar Tour</h2>
+        </header>
+
+        <section>
+          <label class="requerido">Nombre:</label>
+          <input type="text" name="nombre" value="{{ tour.nombre }}" required />
+          <hr />
+          <label class="">Slug:</label>
+          <input type="text" name="slug" value="{{ tour.slug }}" />
+          <hr />
+          <label class="">Tipo de tour:</label>
+          <input type="text" name="tipoDeTour" value="{{ tour.tipoDeTour }}" />
+          <hr />
+          <label class="requerido">Descripción:</label>
+          <input type="text" name="descripcion" value="{{ tour.descripcion }}" required />
+          <hr />
+          <label class="">Img:</label>
+          <input type="text" name="img" value="{{ tour.img }}" />
+          <hr />
+          <label class="">País:</label>
+          <input type="text" name="pais" value="{{ tour.pais }}" />
+          <hr />
+          <label class="">Zona Salida:</label>
+          <select name="zonaSalida">
+            {% for zona_obj in zonas %}
+            <option value="{{ zona_obj.id }}"
+            {% if tour.zonaSalida == zona_obj %}
+            selected 
+            {% endif %}
+            >{{ zona_obj.nombre }}</option>
+            {% endfor %}
+          </select>
+          <hr />
+          <label class="">Zona Llegada:</label>
+          <select name="zonaLlegada">
+            {% for zona_obj in zonas %}
+            <option value="{{ zona_obj.id }}"
+            {% if tour.zonaLlegada == zona_obj %}
+            selected 
+            {% endif %}
+            >{{ zona_obj.nombre }}</option>
+            {% endfor %}
+          </select>
+          <hr />
+        </section>
+
+        <footer>
+          <nav class="nav-botones">
+            <input type="submit" class="btn" value="Guardar" />
+            <a class="btn" href="/">Cancelar</a>
+          </nav>
+        </footer>
+      </form>
+    </div><!-- termina class="contenido" -->
+    {% endblock %}
