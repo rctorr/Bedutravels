@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/static/tours/css/forms.css">
   <link rel="stylesheet" href="/static/tours/css/destinos.css">
   <link rel="stylesheet" href="/static/tours/css/profile.css">
-  <title>Bedutravels - Login</title>
+  <title>Bedutravels - Registro</title>
 </head>
 <body>
   <nav class="menu_main" style="justify-content:center;">
@@ -24,13 +24,26 @@
       </aside>
       {% endif %}
       <div class="margin-bottom-sm">
-        <p class="title-font margin-bottom-lg margin-top-lg text-center">Entra al sistema</p>
+        <p class="title-font margin-bottom-lg margin-top-lg text-center">Registro de nuevo usuario</p>
       </div>
       <div class="profile-info">
         <form class="profile-inputs" method="post">
               {% csrf_token %}
-              Usuario: <input type="text" name="username" value="">
-              Clave: <input type="password" name="password" value="">
+              Usuario: <input type="text" name="username" value="" required />
+              Nombre: <input type="text" name="first_name" value="" />
+              Apellidos: <input type="text" name="last_name" value="" />
+              Email: <input type="email" name="email" value="" />
+              Fecha nacimiento: <input type="date" name="fechaNacimiento" value="" />
+              Tipo: <input type="text" name="tipo" value="" />
+              Género:
+              <select name="genero" required>
+                <option value="">Selecciona el género</option>
+                {% for val, descrip in lista_generos %}
+                <option value="{{ val }}">{{ descrip }}</option>
+                {% endfor %}
+              </select>
+              Clave: <input type="password" name="password1" value="" required />
+              Confirmar clave: <input type="password" name="password2" value="" required />
 
               <!-- Para indicar a que url se redirige después de hacer login -->
               {% if next %}
@@ -40,10 +53,10 @@
               {% endif %}
                     
               <button class="button-tour margin-top-sm" style="align-self: center; width:50%;" type="submit" name="button">
-                Entrar
+                Registrar
               </button>
               <aside>
-                <a href="/registro/">Registro</a>
+                <a href="/login/">Login</a>
               </aside>
         </form>
       </div>

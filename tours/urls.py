@@ -15,5 +15,6 @@ urlpatterns = [
     path("logout/",
         auth_views.LogoutView.as_view(next_page="/"),
         name="logout"),
+    path("registro/", views.registro, name="registro"),
     path('api/graphql/', GraphQLView.as_view(graphiql=True)),
 ]

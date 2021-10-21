@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import Http404
 from django.shortcuts import render, redirect
-from .models import Tour, Zona
+from .models import Tour, Zona, Perfil
 
 from .serializers import ZonaSerializer, TourSerializer
 from rest_framework import viewsets
@@ -9,6 +10,54 @@ from rest_framework import viewsets
 # Bedutravels/tours/views.py
 
 # Create your views here.
+def registro(request):
+   """ Atiende las peticiones GET y POST /registro/ """
+   if request.POST:
+      username = request.POST.get("username")
+      first_name = request.POST.get("first_name", None)
+      last_name = request.POST.get("last_name", None)
+      email = request.POST.get("email", None)
+      fechaNacimiento = request.POST.get("fechaNacimiento", None)
+      if fechaNacimiento == "":
+         fechaNacimiento = None
+      tipo = request.POST.get("tipo", None)
+      genero = request.POST.get("genero")
+      password1 = request.POST.get("password1")
+      password2 = request.POST.get("password2")
+
+      if password1 == password2:
+         # User
+         user = User(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+         )
+         user.set_password(password1)
+         user.save()
+         # Perfil
+         perfil = Perfil(
+            user=user,
+            fecha_nacimiento=fechaNacimiento,
+            tipo=tipo,
+            genero=genero
+         )
+         perfil.save()
+
+         return redirect("/")
+      else:
+         msg = "Error: Las claves tienen que ser idénticas"
+   else:
+      # Estamos atendiendo el método GET
+      msg = ""
+
+   return render(request, "registration/registro.html",
+      {
+         "msg":msg,
+         "lista_generos":Perfil.GENERO,
+      }
+   )
+
 @login_required()
 def index(request, msg=""):
    """ Atiende la petición GET / """
