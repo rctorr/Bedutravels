@@ -18,7 +18,7 @@ class Perfil(models.Model):
 
     def __str__(self):
         """ Representación en str para User """
-        return self.user
+        return f"{self.user.username} ({self.genero})"
 
 class Zona(models.Model):
     """ Define la tabla Zona """
